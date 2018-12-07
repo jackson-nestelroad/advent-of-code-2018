@@ -1,0 +1,29 @@
+{
+  "name": "advent-of-code",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "compile": "babel src --out-dir ./dist --copy-files --source-maps",
+    "test": "call scripts/test.bat",
+    "start-compiled": "npm run-script compile && nodemon dist/index.js",
+    "start": "nodemon --exec babel-node src/index.js",
+    "debug": "node --inspect-brk dist/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.2.0",
+    "@babel/node": "^7.0.0",
+    "@babel/preset-env": "^7.2.0",
+    "@babel/register": "^7.0.0",
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.7"
+  },
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "http": "0.0.0"
+  }
+}

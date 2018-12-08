@@ -1,17 +1,20 @@
 // import http from 'http'
 import Result from './classes/result'
-import Solution from './days/1/A'
+import Solution from './days/2/B'
 
-const PORT = 4000;
+const showSolution = () => {
+    let startTime = new Date();
+    let solution = Solution.solve();
+    let endTime = new Date();
 
-let startTime = new Date();
-let solution = Solution.solve();
-let endTime = new Date();
+    let result = new Result(solution, `${endTime - startTime}ms`);
 
-let result = new Result(solution, `${endTime - startTime}ms`);
+    return result;
+}
 
-console.log(result);
+console.log(showSolution());
 
+// const PORT = 4000;
 // http.createServer((req, res) => {
 //   res.writeHead(200, {'Content-Type': 'application/json'});
 //   res.end(JSON.stringify(result.getJSON()));

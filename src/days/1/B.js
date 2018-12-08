@@ -14,16 +14,16 @@ const Solution = {
 
     getDuplicate: function(deltas){
         let frequency = 0;
-        let frequencies = [frequency];
+        let frequencies = { 0: true };
         let found = false;
         while(!found){
             for(let change of deltas){
                 frequency += Number(change);
-                if(frequencies.includes(frequency)){
+                if(frequencies[frequency]){
                     found = true;
                     break;
                 }
-                frequencies.push(frequency);
+                frequencies[frequency] = true;
             }
         }
         return frequency;

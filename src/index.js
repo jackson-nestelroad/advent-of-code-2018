@@ -1,6 +1,6 @@
 // import http from 'http'
 import Result from './classes/result'
-import Solution from './days/2/B'
+import Solution from './days/3/A'
 
 const showSolution = () => {
     let startTime = new Date();

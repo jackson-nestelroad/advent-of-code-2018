@@ -8,7 +8,7 @@
     "test": "call scripts/test.bat",
     "start-compiled": "npm run-script compile && nodemon dist/index.js",
     "start": "nodemon --exec babel-node src/index.js",
-    "debug": "node --inspect-brk dist/index.js"
+    "debug": "npm run-script compile && node --inspect-brk dist/index.js"
   },
   "author": "",
   "license": "ISC",

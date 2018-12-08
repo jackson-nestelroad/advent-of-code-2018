@@ -4,11 +4,11 @@ import fs from 'fs';
 
 const Solution = {
     solve: function(){
-        let deltas = this.getFile().split('\n');
+        let deltas = this.readFile().split('\n');
         return this.getDuplicate(deltas.slice(0, deltas.length - 1));
     },
 
-    getFile: function(){
+    readFile: function(){
         return fs.readFileSync(`${__dirname}/input.txt`, 'utf8');
     },
 

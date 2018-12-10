@@ -26,13 +26,14 @@ const Solution = {
     parseRectangle: function(rectangle){
         if(rectangle == '' || !rectangle)
             return false;
+        let id = Number(rectangle.substring(1, rectangle.search('@') - 1));
         rectangle = rectangle.substring(rectangle.search('@') + 2);
         let array = rectangle.split(': ');
         let coordinate = array[0].split(',');
         let size = array[1].split('x');
 
         let coordinateObject = new Coordinate(coordinate[0], coordinate[1]);
-        return new Rectangle(coordinateObject, size[0], size[1]);
+        return new Rectangle(id, coordinateObject, size[0], size[1]);
     },
 
     getOverlapCount: function(rectangles){

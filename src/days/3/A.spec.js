@@ -11,10 +11,10 @@ describe("Day 3 - Puzzle A", () => {
     });
 
     describe("parseRectangle()", () => {
-        it("should return {{x: 100, y: 200}, 50, 60} when given #1 @ 100,200: 50x60", () => {
+        it("should return {1, {x: 100, y: 200}, 50, 60} when given #1 @ 100,200: 50x60", () => {
             let input = "#1 @ 100,200: 50x60";
             const parsed = Solution.parseRectangle(input);
-            expect(parsed).to.eql(new Rectangle(new Coordinate(100, 200), 50, 60));
+            expect(parsed).to.eql(new Rectangle(1, new Coordinate(100, 200), 50, 60));
         });
     });
 
@@ -28,9 +28,9 @@ describe("Day 3 - Puzzle A", () => {
     describe("getOverlapCount()", () => {
         it("should return 4 when given overlapping rectangles", () => {
             let input = [
-                new Rectangle(new Coordinate(1, 3), 4, 4),
-                new Rectangle(new Coordinate(3, 1), 4, 4),
-                new Rectangle(new Coordinate(5, 5), 2, 2)
+                new Rectangle(1, new Coordinate(1, 3), 4, 4),
+                new Rectangle(2, new Coordinate(3, 1), 4, 4),
+                new Rectangle(3, new Coordinate(5, 5), 2, 2)
             ];
             const overlap = Solution.getOverlapCount(input);
             expect(overlap).to.equal(4);

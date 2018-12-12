@@ -45,6 +45,7 @@ const Algorithms = {
             array[k++] = Right[j++];
     },
 
+    // Insert into an array in numerical order
     orderedInsert: function(array, element){
         let first = 0;
         let last = array.length;
@@ -56,6 +57,17 @@ const Algorithms = {
         array[last] = element;
         return last;
     },
+
+    // Return an array of a range of numbers
+    range: function(start = 0, end = 0, step = 1){
+        if(start === end || step === 0)
+            return [];
+        let difference = end - start + 1;
+        let length = Math.ceil(difference / step);
+        return start > end
+            ? Array.from({ length }, (value, key) => start - key * step)
+            : Array.from({ length }, (value, key) => start + key * step);
+    }
 }
 
 export default Algorithms;

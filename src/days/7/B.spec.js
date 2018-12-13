@@ -2,7 +2,7 @@ import { expect } from "chai"
 import Solution from "./B"
 import { Instruction } from "./Classes"
  
-describe("Day 7 - Puzzle A", () => {
+describe("Day 7 - Puzzle B", () => {
     describe("Instruction.parse()", () => {
         it("should return [A,B] when given instruction", () => {
             let input = "Step A must be finished before step B can begin.";

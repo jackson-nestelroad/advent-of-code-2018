@@ -13,7 +13,7 @@ const Solution = {
         let instructions = this.formatInstructions(parsedInput);
 
         // Get commands that are ready to be executed
-        let letters = Object.keys(instructions).sort((a,b) => a.localeCompare(b));
+        let letters = Object.keys(instructions).sort();
         let queue = { };
         letters.forEach(letter => {
             if(instructions[letter].before.length == 0)
@@ -74,7 +74,7 @@ const Solution = {
         this.execute.queue = this.execute.queue ? this.execute.queue : startingQueue;
 
         // Run dependent commands
-        instructions[letter].before.sort((a,b) => a.localeCompare(b)).forEach(cmd => {
+        instructions[letter].before.sort().forEach(cmd => {
             if(!instructions[cmd].done)
                 order += this.execute(cmd, instructions);
         });
@@ -99,7 +99,7 @@ const Solution = {
         // Run next command
         let queue = Object.keys(this.execute.queue);
         while(queue.length){
-            let current = queue.sort((a,b) => a.localeCompare(b)).shift();
+            let current = queue.sort().shift();
             delete this.execute.queue[current];
             if(!instructions[current].done){
                 order += this.execute(current, instructions);

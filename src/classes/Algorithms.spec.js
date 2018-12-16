@@ -3,7 +3,7 @@ import Algorithms from "./Algorithms"
 
 // npm test ../classes Algorithms
 
-describe("Day 3 - Puzzle B", () => {
+describe("Algorithms", () => {
     describe("mergeSort()", () => {
         it("should return [1,2,3,4] when given [2,1,4,3]", () => {
             let input = [2,1,4,3];
@@ -41,5 +41,5 @@ describe("Day 3 - Puzzle B", () => {
             const range = Algorithms.range(2,10,2);
             expect(range).to.eql([2,4,6,8,10]);
         });
-    })
+    });
 });

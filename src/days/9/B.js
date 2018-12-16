@@ -4,6 +4,9 @@ import fs from 'fs'
 import Marbles from './Classes'
  
 const Solution = {
+
+    // The only difference I made between part A and part B was implementing the
+    // solution as a doubly circular linked list opposed to a simple singly linked list.
     solve: function(){
         let input = this.readFile();
         let numbers = this.parseNumbers(input);

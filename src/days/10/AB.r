@@ -67,10 +67,10 @@ Y.max <- as.numeric(subset(points, Y == apply(points, 2, max)["Y"])[1,]["Y"])
 Y.min <- as.numeric(subset(points, Y == apply(points, 2, min)["Y"])[1,]["Y"])
 
 # Scale the boundaries of our axes so we can see the message better
-X.max <- X.max * 6/5
-X.min <- X.min * 4/5
-Y.max <- Y.max * 6/5
-Y.min <- Y.min * 4/5
+X.max <- X.max * 7/5
+X.min <- X.min * 3/5
+Y.max <- Y.max * 7/5
+Y.min <- Y.min * 3/5
 
 # Plot all the points
 ggplot(data = points, aes(x = X, y = Y)) + 

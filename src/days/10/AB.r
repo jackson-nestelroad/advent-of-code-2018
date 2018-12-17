@@ -84,4 +84,7 @@ ggplot(data = points, aes(x = X, y = Y)) +
 
 # Save result as a .png
 ggsave("../GitHub/advent-of-code-2018/src/days/10/A_result.png")
+
+# Give the time needed to receieve the message (part B)
+print(time)
   

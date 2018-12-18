@@ -59,18 +59,18 @@ const Solution = {
         return power;
     },
 
-    getPartialSum(sumTable, x, y, length = 1, height = 1){
+    getPartialSum(sumTable, i, j, length = 1, height = 1){
         let total = 0;
-        total += sumTable.at(x, y);
+        total += sumTable.at(i, j);
         
-        let xOffset = x >= length;
-        let yOffset  = y >= height;
-        if(xOffset)
-            total -= sumTable.at(x - length, y);
+        let yOffset = i >= length;
+        let xOffset  = j >= height;
         if(yOffset)
-            total -= sumTable.at(x, y - height);
-        if(xOffset && yOffset)
-            total += sumTable.at(x - length, y - height);
+            total -= sumTable.at(i - length, j);
+        if(xOffset)
+            total -= sumTable.at(i, j - height);
+        if(yOffset && xOffset)
+            total += sumTable.at(i - length, j - height);
         return total;
     }
 }

@@ -18,7 +18,7 @@ const Solution = {
         let state = initial;
         
         // Run each generation
-        for(let gen = 1; gen <= 50000000000; gen++){
+        for(let gen = 1; gen <= 20; gen++){
             // Extend state to the right by two pots as we grow to the left
             state = this.extendState(state);
             let newState = "";

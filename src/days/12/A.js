@@ -35,7 +35,6 @@ const Solution = {
                 else if(end >= state.length){
                     pattern += state.substring(beginning);
                     pattern += "0".repeat(5 - pattern.length);
-                    //console.log(gen, pot, pattern, parseInt(pattern, 2), this.testPattern(parseInt(pattern, 2), rules));
                 }
                 else{
                     pattern += state.substring(beginning, end + 1);

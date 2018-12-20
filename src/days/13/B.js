@@ -64,7 +64,7 @@ const Solution = {
                     tracks[cart.y][cart.x] = hit.below;
                     carts = carts.filter(element => element.x != cart.x || element.y != cart.y);
                     // If index is out of bounds, move it back
-                    if(i >= carts.length)
+                    if(i > carts.length)
                         i = carts.length;
                 }
                 else{

@@ -1,5 +1,5 @@
 import { expect } from "chai"
-import LinkedList from "./DoublyLinkedList"
+import LinkedList from "./DoublyCircularLinkedList"
 
 describe("LinkedList", () => {
     describe("add()", () => {

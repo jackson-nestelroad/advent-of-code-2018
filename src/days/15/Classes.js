@@ -85,8 +85,8 @@ export class Map {
 
     // Print out the game map
     print(round){
-        // if(round)
-        //     readline.moveCursor(process.stdout, 0, -1 * (this.array.length + 1));
+        if(round)
+            readline.moveCursor(process.stdout, 0, -1 * (this.array.length + 1));
         this.terminal.write(`After Round ${round}:\n`);
         this.array.forEach(line => {
             this.terminal.write(`${line.join('')}\n`);
@@ -228,8 +228,6 @@ export class Game {
                     let y = a[1].y - b[1].y;
                     return y ? y : a[1].x - b[1].x;
                 });
-                if(this.current.pos.x == 7 && this.current.pos.y == 17 && this.round == 29)
-                    console.log(targetPaths);
                 // Return the first path to the enemy found
                 return targetPaths[0];
             }

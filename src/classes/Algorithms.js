@@ -67,6 +67,11 @@ const Algorithms = {
         return start > end
             ? Array.from({ length }, (value, key) => start - key * step)
             : Array.from({ length }, (value, key) => start + key * step);
+    },
+
+    // Invert key and value in an object
+    invert: function(object){
+        return Object.entries(object).reduce((obj, [key, value]) => ({...obj, [value]: key }), {});
     }
 }
 

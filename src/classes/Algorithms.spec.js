@@ -42,4 +42,11 @@ describe("Algorithms", () => {
             expect(range).to.eql([2,4,6,8,10]);
         });
     });
+
+    describe("invert()", () => {
+        it("should return {1: a, 2: b, 3: c} when given {a: 1, b: 2, c: 3}", () => {
+            const inverted = Algorithms.invert({a: 1, b: 2, c: 3});
+            expect(inverted).to.eql({1: 'a', 2: 'b', 3: 'c'});
+        });
+    });
 });

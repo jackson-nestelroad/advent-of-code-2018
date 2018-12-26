@@ -85,8 +85,8 @@ export class Map {
 
     // Print out the game map
     print(round){
-        if(round)
-            readline.moveCursor(process.stdout, 0, -1 * (this.array.length + 1));
+        // if(round)
+        //     readline.moveCursor(process.stdout, 0, -1 * (this.array.length + 1));
         this.terminal.write(`After Round ${round}:\n`);
         this.array.forEach(line => {
             this.terminal.write(`${line.join('')}\n`);
@@ -95,10 +95,13 @@ export class Map {
 }
 
 export class Game {
-    constructor(map){
+    constructor(map, problem = 'A', elfAP = 3){
         this.map = new Map(map);
+        this.problem = problem;
+        this.elfAP = elfAP;
         this.round = 0;
         this.over = false;
+        this.elfDead = false;
         this.fighters = this.getFighters();
     }
 
@@ -112,7 +115,7 @@ export class Game {
                     fighters.push(new Fighter(x, y, 200, 3, 'G', 'E'));
                 // Elf found
                 else if(this.map.at(x,y) == 'E')
-                    fighters.push(new Fighter(x, y, 200, 3, 'E', 'G'));
+                    fighters.push(new Fighter(x, y, 200, this.elfAP, 'E', 'G'));
             }
         }
         return fighters;
@@ -120,13 +123,17 @@ export class Game {
 
     // Start the game
     start(){
-        this.map.print(this.round);
+        // this.map.print(this.round);
         while(true){
             // Run the round
             this.runRound();
 
             // Print out the game board
-            this.map.print(this.round);
+            // this.map.print(this.round);
+
+            // Part B
+            if(this.problem == 'B' && this.elfDead)
+                return false;
 
             // The game is over
             if(this.over)
@@ -216,11 +223,13 @@ export class Game {
             });
             // We have found a path to an enemy
             if(targetPaths.length){
-                // If multiple paths, sort by reading order
+                // If multiple paths, sort by reading order of FIRST move (NOT THE TARGET'S POSITION)
                 targetPaths.sort((a, b) => {
-                    let y = a[a.length - 1].y - b[b.length - 1].y;
-                    return y ? y : a[a.length - 1].x - b[b.length - 1].x;
+                    let y = a[1].y - b[1].y;
+                    return y ? y : a[1].x - b[1].x;
                 });
+                if(this.current.pos.x == 7 && this.current.pos.y == 17 && this.round == 29)
+                    console.log(targetPaths);
                 // Return the first path to the enemy found
                 return targetPaths[0];
             }
@@ -257,6 +266,8 @@ export class Game {
         // Returns true if enemy dies
         if(this.current.attack(enemy)){
             // Remove them from the game and the map
+            if(enemy.type == 'E')
+                this.elfDead = true;
             this.fighters = this.fighters.filter(f => f != enemy);
             this.map.fill(enemy.pos, '.');
         }
@@ -268,13 +279,6 @@ export class Game {
         this.fighters.sort((a, b) => {
             let y = b.pos.y - a.pos.y;
             return y ? y : b.pos.x - a.pos.x;
-        });
-    }
-
-    // Sort forwards based on distance from fighter
-    sortTargets(){
-        this.targets.sort((a, b) => {
-            return this.current.distance(a.pos) - this.current.distance(b.pos);
         });
     }
 

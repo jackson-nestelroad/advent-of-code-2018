@@ -1,6 +1,6 @@
 import { expect } from 'chai'
 import Solution from './A'
-import { Coordinate, Region, Cave } from './Classes'
+import { Coordinate, Region, Cave } from './ClassesA'
 
 describe("Day 22 - Puzzle A", () => {
     let cave = new Cave(0, 0, 510, new Coordinate(10,10));

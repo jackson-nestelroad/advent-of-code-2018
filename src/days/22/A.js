@@ -1,7 +1,7 @@
 'use strict';
 
 import fs from 'fs'
-import { Coordinate, Cave } from './Classes'
+import { Coordinate, Cave } from './ClassesA'
 
 const Solution = {
     solve: function(file = "input.txt"){

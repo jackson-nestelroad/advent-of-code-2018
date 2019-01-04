@@ -9,6 +9,19 @@ export class Coordinate {
     toString(){
         return `${this.x}x${this.y}`;
     }
+
+    adjacent(){
+        return [
+            new Coordinate(this.x, this.y - 1),
+            new Coordinate(this.x - 1, this.y),
+            new Coordinate(this.x + 1, this.y),
+            new Coordinate(this.x, this.y + 1)
+        ];
+    }
+
+    distance(coord){
+        return Math.abs(this.y - coord.y) + Math.abs(this.x - coord.x);
+    }
 }
 
 export class Region {
@@ -16,7 +29,14 @@ export class Region {
         this.index = index;
         this.erosion = erosion;
         this.type = type;
+        this.time = Infinity;
     }
+}
+
+export const Tools = {
+    NEITHER: 0,
+    TORCH: 1,
+    GEAR: 2
 }
 
 export class Cave {
@@ -57,7 +77,7 @@ export class Cave {
         if(coord.x == 0)
             return coord.y * 48271;
 
-        let adjacents = this.getAdjacents(coord).slice(0, 2);
+        let adjacents = coord.adjacent().slice(0, 2);
         adjacents = adjacents.map(coord => this.getGeologicIndex(coord));
         adjacents = adjacents.map(index => this.getErosionLevel(index));
         return adjacents[0] * adjacents[1];
@@ -69,15 +89,6 @@ export class Cave {
 
     getType(erosion){
         return erosion % 3;
-    }
-
-    getAdjacents(coord){
-        return [
-            new Coordinate(coord.x, coord.y - 1),
-            new Coordinate(coord.x - 1, coord.y),
-            new Coordinate(coord.x + 1, coord.y),
-            new Coordinate(coord.x, coord.y + 1)
-        ];
     }
 }
 
